@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CentroMedico___Proyecto_Final.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Guardar">Crear nuevo usuario</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Usuario
+            </th>            
+            <th>
+                Email
+            </th>
+            <th>
+                ID Paciente
+            </th>
+            <th>
+                ID Profesional
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreUsuario)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @item.PacienteId
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProfesionalId)
+            </td>
+            <td>
+                <a asp-action="Editar" asp-route-id="@item.UsuariosId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.UsuariosId">Details</a> |
+                <a asp-action="Eliminar" asp-route-id="@item.UsuariosId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
